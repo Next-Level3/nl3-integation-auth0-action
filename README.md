@@ -16,6 +16,7 @@ This integration allows auth0 customers to integrate a post login action to chec
 12. Click "Create"
 13. Select the icon that looks like a skeleton key called "Secrets"
 14. Add the following secrets:
+
 | Secret Name | Secret Value (description of value) |
 | ----------- | ----------------------------------- |
 | SIGNING_KEY | The base64 encoded signing key associated with the application you are integrating with from the NL3 company portal (company.nextlevel3.com) |
