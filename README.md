@@ -25,6 +25,7 @@ This integration allows auth0 customers to integrate a post login action to chec
 | API_HOST | The domain name for the NL3 external API (see NL3 product documentation or contact your account representative) |
 | API_PATH | The path to the account protection check API method (e.g. /v1/AccountProtectionCheck) |
 | LOCKED_MESSAGE | The message to display to the end user if the account is locked (e.g. "Either the username and/or password are incorrect or the user account is locked") |
+| FAIL_OPEN | Set to 'true' without quotes if you want the lock check to fail open, otherwise set it to 'false' without quotes. |
 
 ## Test Integration
 First, enable a user account for this application. Then, attempt to authenticate with the user account locked and then again with the user account unlocked.
