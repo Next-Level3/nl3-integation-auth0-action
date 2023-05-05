@@ -34,7 +34,12 @@ function getLockStatus (jwt, api_host, api_path, event) {
 
       response.on('end', () => {
 				let response_body = Buffer.concat(chunks_of_data);
-				resolve(response_body.toString());
+        if (response.statusCode == 200) {
+				  resolve(response_body.toString());
+        }
+        else {
+          resolve('{ "statusCode": ' + response.statusCode + '}');
+        }
 			});
 			response.on('error', (error) => {
         console.log("Error = " + error.message);
@@ -70,9 +75,15 @@ exports.onExecutePostLogin = async (event, api) => {
           console.log(res.toString());
 
         if(result) {
-          console.log(JSON.stringify(result));
-          if(result.locked) {
-            api.access.deny(event.secrets.LOCKED_MESSAGE);
+          if(!result.statusCode) {
+            console.log(JSON.stringify(result));
+            if(result.locked) {
+              api.access.deny(event.secrets.LOCKED_MESSAGE);
+            }
+          } else {
+            if (!failOpen) {
+              api.access.deny(event.secrets.LOCKED_MESSAGE);
+            }
           }
         } else {
           if (!failOpen) {
