@@ -27,6 +27,9 @@ This integration allows auth0 customers to integrate a post login action to chec
 | LOCKED_MESSAGE | The message to display to the end user if the account is locked (e.g. "Either the username and/or password are incorrect or the user account is locked") |
 | FAIL_OPEN | Set to 'true' without quotes if you want the lock check to fail open, otherwise set it to 'false' without quotes. |
 
+## Fill in POST data (post_data) with appropriate Auth0 fields in promiseEU function
+Different customers store user data in Auth0 in different fields. You will most likely need to update the event.user. . . properties referenced to the appropriate event.user fields for your configuration (contact support for guidance).
+
 ## Integrate into Actions "Login" Flow
 1. Log into manage.auth0.com as a user with permissions to create and modify action flows
 2. In the left-side menu select "Actions > Flows"
