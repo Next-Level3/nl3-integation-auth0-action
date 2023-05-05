@@ -22,8 +22,8 @@ This integration allows auth0 customers to integrate a post login action to chec
 | SIGNING_KEY | The base64 encoded signing key associated with the application you are integrating with from the NL3 company portal (company.nextlevel3.com) |
 | APP_URI | The fully-qualified domain name associated with your application and SIGNING_KEY |
 | CLIENT_ID | The Auth0 Client ID associated with the application you wish to add an NL3 Account Protection Check (This value can be found at manage.auth0.com by selecting Applications > Applications on the left-side menu. It will be in the right-hand column of the list of applications. |
-| API_HOST | The domain name for the NL3 external API (see NL3 product documentation or contact your account representative) |
-| API_PATH | The path to the account protection check API method (e.g. /v1/AccountProtectionCheck) |
+| API_HOST | The domain name for the NL3 external API (e.g., api.nextlevel3.com - see NL3 product documentation or contact your account representative) |
+| API_PATH | The path to the account protection check API method (e.g.,  /nl3/api/v1/accountProtectionCheck) |
 | LOCKED_MESSAGE | The message to display to the end user if the account is locked (e.g. "Either the username and/or password are incorrect or the user account is locked") |
 | FAIL_OPEN | Set to 'true' without quotes if you want the lock check to fail open, otherwise set it to 'false' without quotes. |
 
