@@ -27,6 +27,15 @@ This integration allows auth0 customers to integrate a post login action to chec
 | LOCKED_MESSAGE | The message to display to the end user if the account is locked (e.g. "Either the username and/or password are incorrect or the user account is locked") |
 | FAIL_OPEN | Set to 'true' without quotes if you want the lock check to fail open, otherwise set it to 'false' without quotes. |
 
+## Integrate into Actions "Login" Flow
+1. Log into manage.auth0.com as a user with permissions to create and modify action flows
+2. In the left-side menu select "Actions > Flows"
+3. Select "Login" from the tiles under the "Flows" header
+4. In the side panel with the "Add Action" header, select the "Custom" tab
+5. Find the Custom Action you created above and drag it into one of the "Drop Here" boxes that display below the "Start > User Logged In" and "Complete - Token Issued" flow designators when you start to drag over the custom action and make sure when you release it the action remains in the flow
+6. Select "Apply" in the top right to add the action to the flow
+
+
 ## Test Integration
 First, enable a user account for this application. Then, attempt to authenticate with the user account locked and then again with the user account unlocked.
 
