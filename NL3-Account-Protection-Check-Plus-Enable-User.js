@@ -37,16 +37,12 @@ function promiseEU(event, api) {
 
       response.on('end', () => {
 				let response_body = Buffer.concat(chunks_of_data);
-        if (response.statusCode == 200) {
+        if (response.statusCode && response.statusCode >= 200 && response.statusCode < 300) {
           console.log("200 Status Code");
           api.user.setUserMetadata("nl3Enabled", true);          
 				  resolve(response_body.toString());
         }
         else {
-          if (response.statusCode == 202) {
-            console.log("202 Status Code");
-            api.user.setUserMetadata("nl3Enabled", true);          
-          }
           resolve('{ "statusCode": ' + response.statusCode + '}');
         }
 			});
@@ -96,7 +92,7 @@ function getLockStatus (jwt, api_host, api_path, event) {
 				  resolve(response_body.toString());
         }
         else {
-          resolve('{ "statusCode": ' + response.statusCode + '}');
+          resolve('{ "statusCode": ' + response.statusCode + ', "statusMessage": ' + response.statusMessage + '}');
         }
 			});
 			response.on('error', (error) => {
@@ -118,9 +114,9 @@ exports.onExecutePostLogin = async (event, api) => {
         var resultEU = JSON.parse(resEU);
         if(resultEU) {
           if(!resultEU.statusCode) {
-            console.log("Success! No statusCode");
+            console.log("Success!");
           } else {
-            console.log("User exists already!")
+            console.log("Status Code = " + resultEU.statusCode + " & Status Message = " + resultEU.statusMessage);
           }
         }
       }
@@ -165,5 +161,4 @@ exports.onExecutePostLogin = async (event, api) => {
       api.access.deny(event.secrets.LOCKED_MESSAGE);
     }
   }
-
 };
